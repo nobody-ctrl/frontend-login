@@ -25,12 +25,8 @@ function sendAjaxForm(url) {
         dataType: "json", //формат данных
         data: formData,  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
-            if ($('#alert').hasClass('alert-danger')){
-                $("#alert").removeClass("alert-danger");
-            }
-            $("#alert").addClass("alert-success");
-            $("#alert").html(response["message"]);
-            console.log(response);
+            alert('Setting web token and redirecting you!')
+            localStorage.setItem('tokem', response.token);
         },
         error: function(response) { // Данные не отправлены
             if ($('#alert').hasClass('alert-success')){
