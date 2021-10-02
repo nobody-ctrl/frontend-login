@@ -25,8 +25,8 @@ function sendAjaxForm(url) {
         dataType: "json", //формат данных
         data: formData,  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
-            alert('Setting web token and redirecting you!')
-            localStorage.setItem('tokem', response.token);
+            localStorage.setItem('token', response.token);
+            window.location.href = "http://5.187.6.96/welcome/";
         },
         error: function(response) { // Данные не отправлены
             if ($('#alert').hasClass('alert-success')){
@@ -35,7 +35,6 @@ function sendAjaxForm(url) {
             $("#alert").addClass("alert-danger");
             var msg = JSON.parse(response.responseText);
             $("#alert").html(msg.error.message);
-            console.log(response);
         }
     });
 }
